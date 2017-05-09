@@ -24,10 +24,11 @@ GEM
     jekyll-watch (1.5.0)
       listen (~> 3.0, < 3.1)
     kramdown (1.13.2)
+    libv8 (3.16.14.19)
     liquid (3.0.6)
-    listen (3.0.8)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
+    listen (3.0.6)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9.7)
     mercenary (0.3.6)
     minima (2.1.1)
       jekyll (~> 3.3)
@@ -37,9 +38,13 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    ref (2.0.0)
     rouge (1.11.1)
     safe_yaml (1.0.4)
     sass (3.4.23)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
+      ref
 
 PLATFORMS
   ruby
@@ -48,6 +53,7 @@ DEPENDENCIES
   jekyll (= 3.4.3)
   jekyll-feed (~> 0.6)
   minima (~> 2.0)
+  therubyracer
   tzinfo-data
 
 RUBY VERSION

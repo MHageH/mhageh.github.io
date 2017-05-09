@@ -4,12 +4,20 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Mohamed Hage Hassan, microelectronics engineering student at the Grenoble
+Institute of Technology - [Phelma](http://phelma.grenoble-inp.fr/), France.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+<span style="color:blue"> **Contact** </span>
+
+At 7, 20 Rue Anthoard, Grenoble, 38000 France.
+
+<span style="color:blue"> **General Interests** </span>
+* Microelectronics
+* Technology in general
+* Neuromorphic circuits
+* Pure Mathematics, and especially modular theories, such as the Axiomatic Set Theory (ZFC).
+* Drones
+
+I'm a on old member of the Electronics club at the University of Franche-Compte,
+as well as a member of [French Mathematical Society](http://smf.emath.fr/).
