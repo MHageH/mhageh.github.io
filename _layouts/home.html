@@ -1,0 +1,110 @@
+---
+layout: default
+---
+
+
+<link rel="stylesheet" href="style/latinmodern-roman.css" type="text/css" charset="utf-8" />
+
+ <!-- Used from https://github.com/slashfoo/lmweb-->
+ <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="style/latinmodern-roman-caps.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="style/latinmodern-roman-demi.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="style/latinmodern-roman-dunhill.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="style/latinmodern-roman-slanted.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="style/latinmodern-roman.css" type="text/css" charset="utf-8" />
+        <style type="text/css">
+            body {
+                font-size: 12px;
+            }
+            div {
+	        font-size: 12px; 
+                margin-bottom: 12px;
+            }
+	    h3 {
+	        font-size: 14px;
+	    }
+            .romanbi {
+                font-family: 'Latin Modern Roman';
+                font-weight: bold;
+                font-style: italic;
+            }
+            .romanb {
+                font-family: 'Latin Modern Roman';
+                font-weight: bold;
+                font-style: normal;
+            }
+            .romani {
+                font-family: 'Latin Modern Roman';
+                font-weight: normal;
+                font-style: italic;
+            }
+            .roman {
+                font-family: 'Latin Modern Roman';
+                font-weight: normal;
+                font-style: normal;
+            }
+            .romanco {
+                font-family: 'Latin Modern Roman Caps';
+                font-weight: normal;
+                font-style: oblique;
+            }
+            .romanc {
+                font-family: 'Latin Modern Roman Caps';
+                font-weight: normal;
+                font-style: normal;
+            }
+            .romando {
+                font-family: 'Latin Modern Roman Demi';
+                font-weight: normal;
+                font-style: oblique;
+            }
+            .romand {
+                font-family: 'Latin Modern Roman Demi';
+                font-weight: normal;
+                font-style: normal;
+            }
+            .romanduo {
+                font-family: 'Latin Modern Roman Dunhill';
+                font-weight: normal;
+                font-style: oblique;
+            }
+            .romandu {
+                font-family: 'Latin Modern Roman Dunhill';
+                font-weight: normal;
+                font-style: normal;
+            }
+            .romansb {
+                font-family: 'Latin Modern Roman Slanted';
+                font-weight: bold;
+                font-style: normal;
+            }
+            .romans {
+                font-family: 'Latin Modern Roman Slanted';
+                font-weight: normal;
+                font-style: normal;
+            }
+        </style>
+    </head>
+ 
+<div class="home">
+
+  <h1 class="page-heading">Projects</h1>
+  
+  {{ content }}
+
+  <h2>Interests</h2>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+
+        <span class="post-meta">{{ date: date_format }}</span>
+	
+        <h3 font-size = 14px;>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h3>
+      </li>
+    {% endfor %}
+  </ul>
+     
+</div>
