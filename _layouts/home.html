@@ -96,14 +96,11 @@ layout: default
   <h2>Interests</h2>
   <ul class="post-list">
     {% for post in site.posts %}
-      <li>
-
-        <span class="post-meta">{{ date: date_format }}</span>
-	
-        <h3 font-size = 14px;>
+      
+        <b>
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </h3>
-      </li>
+        </b>
+      
     {% endfor %}
   </ul>
      
