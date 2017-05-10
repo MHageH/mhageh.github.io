@@ -28,7 +28,7 @@ electromagnetism, mechanics, to Quantum Electro-dynamics, Quantum Chromo-dynamic
 Such Mastery will allow us to deploy large amounts of new tactics in dealing with real world
 problems.
 
-A reading list has been [deployed](https://mhageh.gitbooks.io/reading-list/), and one should stick to it and the requirements described in order to achieve such fate.
+A reading list has been [deployed](https://mhageh.github.io/thoughts/2017/05/09/reading-list.html), and one should stick to it and the requirements described in order to achieve such fate.
 
 Current spectrum of skills (not close to full mastery by any means).
 * Programming : C\C++, Python, HTML, CSS(beginner), LaTeX.
@@ -42,16 +42,19 @@ Current spectrum of skills (not close to full mastery by any means).
 * Electronics, circuit theory, circuit design.
 
 Looking forward to :
-* A study of advanced computer algorithms.
-* Complete comprehension of P vs NP problem.
+* A study of [advanced computer algorithms](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-854j-advanced-algorithms-fall-2008/lecture-notes/)
+and their [analysis](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-design-and-analysis-of-algorithms-spring-2015/lecture-notes/).
+* Complete comprehension of [P vs NP problem](http://www.claymath.org/sites/default/files/pvsnp.pdf).
 * Observation of the anatomy of the human brain : Connectome, Neuroplasticity.
-* Learn about the Banach-Tarski Paradox.
-* Boltzmann Brains.
+* Learn about the [Banach-Tarski Paradox](https://people.math.umass.edu/~weston/oldpapers/banach.pdf).
+* [Boltzmann Brains](https://en.wikipedia.org/wiki/Boltzmann_brain).
 * Assessment of human behavior through mathematical analysis.
 * A theory of human consciousness.
-* Mathematics of Quantum Mechanics.
+* [Mathematics of Quantum Mechanics](http://homepage.univie.ac.at/christian.schmeiser/QMED.pdf).
 * Learn CSS, full exploitation of the jekyll platform.
 * Software optimisation, cryptography.
-* Compiler theory.
+* [Compiler theory](http://www.diku.dk/~torbenm/Basics/basics_lulu2.pdf).
 * Proof theory and formal software verification.
-* Understanding of Artificial Neural Networks and their deployement.
+* Understanding of Artificial [Neural Networks](http://www.dkriesel.com/_media/science/neuronalenetze-en-zeta2-2col-dkrieselcom.pdf) and their deployement.
+* [Tensor Flow](https://www.tensorflow.org/).
+* Learning X86 assembly and computer architecture.
