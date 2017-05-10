@@ -1,0 +1,161 @@
+---
+layout: post
+title: "STM32 Dev"
+date : 2016-05-28 20:00:00 +0200
+categories : STM32
+---
+
+# Setting up the development environment :
+
+This post explains how to setup a proper development environment for the STM32 microcontroller,
+specifically the STM32F4-discovery board, without any dependency on eclipse or other IDEs.
+
+First of all, install the required dependencies :
+(This assumes that you have Debian/Ubuntu Linux)
+
+```bash
+apt-get install build-essential git flex bison libgmp3-dev
+libmpfr-dev libncurses5-dev libmpc-dev autoconf texinfo libtool 
+libftdi-dev libusb-1.0-0-dev zlib1g zlib1g-dev python-yaml
+```
+
+You'll have to setup a toolchain :
+
+```bash
+git clone https://github.com/jmfriedt/summon-arm-toolchain
+```
+
+This shell script is modified to support gcc-5.3 and libopencm3, a free low
+level firmware library for Cortex-m development.
+```bash
+./summon-arm-toolchain
+```
+Now it should start downloading the required files and installing the compiled binaries, and
+libraries to ```~/sat/```   
+Throw up a terminal and edit ```.bashrc``` :
+```bash
+nano ~/.bashrc
+```
+Add this export to define the toolchain for the system :
+```bash
+export PATH=/home/YOUR_USER/sat/bin:$PATH
+```
+Then source the .bashrc file :
+```bash
+source ~/.bashrc
+```
+Once the toolchain have been set up, it's time to install texane st-link, an open source version of the STMicroelectronics stlink tools :
+Make sure you installed the required dependencies first :
+```bash
+apt-get install build-essential pkg-config intltool cmake libusb-1.0 
+libusb-1.0.0-dev
+```
+Clone stlink and compile it.
+```bash
+cd ~/
+git clone https://github.com/texane/stlink
+cd stlink
+```
+```bash
+./autogen.sh 
+./configure --with-gtk-gui
+ make
+```
+You can now copy the compiled binaries to /bin and give them permissions :
+```bash
+cp st-* /bin/
+chmod s+x /bin/st-*
+```
+If everything worked smoothly, you can download the libopencm3-examples and try one to flash an example :
+```bash
+cd ~/
+git clone https://github.com/libopencm3/libopencm3-examples
+```
+Initialize the libopencm3 library (only for the examples, or you can modify the main Makefile in libopencm3-examples to point to ~/sat/arm-none-eabi/include/libopencm3/ )
+```bash
+cd libopencm3-examples
+git submodule init
+git submodule update
+```
+Run make now, and flash one of the examples :
+```bash
+make 
+cd examples/stm32/f4/stm32f4-discovery/miniblink
+make flash
+```
+## Makefile :
+
+Suppose you need to program something and you don't need to place it inside the libopencm3-examples directory,
+here's a simple makefile (designed for STM32F4 ) :
+```bash
+cd ~/Project_dir/ 
+cp -avr ../libopencm3-examples/examples/stm32/f4/stm32f4-discovery/example .
+cd example
+```
+Now, you can save this Makefile to the same directory :
+
+```makefile
+NAME=usart_irq
+
+# Toolchain 
+CC = arm-none-eabi-gcc
+OC = arm-none-eabi-objcopy
+
+# Compiler Flags 
+CFLAGS = -Wextra -Wimplicit-function-declaration
+CFLAGS += -Wredundant-decls -Wmissing-prototypes
+CFLAGS += -Wstrict-prototypes -Wundef -Wshadow -fno-common
+
+# Architecture flags
+ARCH_FLAGS = -mcpu=cortex-m4 -mthumb 
+ARCH_FLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+SPECFLAGS = -MD -DSTM32F4
+
+# Linker file (Memory maps)
+LINKER = stm32f4-discovery.ld
+
+# Required Libs
+LIBS = -lopencm3_stm32f4 -lc -lgcc -lnosys
+
+# Libopencm3 includes 
+INCLUDES = -I~/sat/arm-none-eabi/include
+
+# Libopencm3 libraries from summon-arm-toolchain 
+LIBOPENCM3 = -L~/sat/arm-none-eabi/lib/thumb/cortex-m4 
+LIBOPENCM3 += -L~/sat/arm-none-abi/lib
+
+# Linker Flags
+LDFLAGS = --static -Wl,--start-group $(LIBS)
+LDFLAGS += -Wl,--end-group $(LIBOPENCM3) -T$(LINKER) 
+LDFLAGS += -nostartfiles -Wl,--gc-sections  $(ARCH_FLAGS)
+
+# Linker Objects 
+OBJS = $(NAME).o
+
+all : $(NAME).bin
+
+$(NAME).bin: $(NAME).elf
+    $(OC) -Obinary $(NAME).elf $(NAME).bin
+
+$(NAME).o: $(NAME).c
+    $(CC) -Wall $(CFLAGS) $(INCLUDES) $(ARCH_FLAGS) \
+$(SPECFLAGS) -c $(NAME).c
+
+$(NAME).elf: $(NAME).o
+    $(CC) -o $(NAME).elf $(OBJS) $(LDFLAGS)
+
+flash: $(NAME).bin
+    st-flash write $(NAME).bin 0x8000000
+
+clean:
+    rm *.elf *.o *.d
+```
+Add the required linker file (memory map of the specific STM32 board) :
+```
+libopencm3-examples/examples/stm32/f4/stm32f4-discovery/stm32f4-discovery.ld
+```
+Compile and flash the example :
+```
+make ; make flash
+```
+You're good to go
